@@ -1,0 +1,160 @@
+/* Video preview layer (unpublished). Real clips in the old "video slot" figures. */
+.video.vid,.mod .video.vid{aspect-ratio:16/9;background:#030814 center/cover no-repeat}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;background:transparent}
+.vid .vcap{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.vsound{position:absolute;right:12px;top:12px;z-index:3;display:inline-flex;gap:8px;align-items:center;padding:8px 14px 8px 11px;border-radius:99px;border:1px solid rgba(255,255,255,.28);background:rgba(5,11,24,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font:600 13px/1 "IN",system-ui,sans-serif;cursor:pointer;box-shadow:0 8px 24px -8px rgba(0,0,0,.6);transition:background .2s,border-color .2s}
+.vsound .ic{width:18px;height:18px;background:#fff;-webkit-mask:var(--ic-off) center/contain no-repeat;mask:var(--ic-off) center/contain no-repeat}
+.vsound[aria-pressed="true"]{background:rgba(2,120,254,.85);border-color:rgba(124,196,255,.7)}
+.vsound[aria-pressed="true"] .ic{-webkit-mask-image:var(--ic-on);mask-image:var(--ic-on)}
+:root{--ic-off:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3Cpath d='M16 9l6 6M22 9l-6 6' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");--ic-on:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3Cpath d='M16 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")}
+.vid-hero .vsound{top:auto;bottom:14px;right:14px;padding:11px 18px 11px 14px;font-size:14.5px;background:var(--grad);border-color:rgba(255,255,255,.35)}
+.vid-hero .vsound[aria-pressed="true"]{background:rgba(5,11,24,.74)}
+.hero-vid{position:relative;z-index:3;max-width:900px;margin-top:34px}
+.hero-vid .video.vid{border-radius:22px}
+.tour-btn{margin-top:14px;gap:10px}.tour-btn svg{width:16px;height:16px}
+.vstack{display:grid;gap:18px;align-content:start}
+.vstack .video.vid{position:relative}
+@media (min-width:1100px){.mod .vstack{position:sticky;top:110px}}
+.vwide{max-width:880px;margin:44px auto 0}
+.vid-ctl{margin-top:24px;border-radius:18px}
+.vid-signup{margin:4px 0 18px;border-radius:18px}
+/* tour modal */
+.tour{position:fixed;inset:0;z-index:400;display:grid;place-items:center}
+.tour[hidden]{display:none}
+.tour-bg{position:absolute;inset:0;background:rgba(2,6,16,.86);backdrop-filter:blur(6px)}
+.tour-box{position:relative;width:min(92vw,calc(84vh*16/9));aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid var(--line-2);box-shadow:var(--shadow);background:#000}
+.tour-box video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+.tour-x{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(5,11,24,.8);color:#fff;font-size:18px;cursor:pointer}
+body.tour-open{overflow:hidden}
+@media (max-width:760px){
+  .video.vid,.mod .video.vid{aspect-ratio:9/16;width:min(100%,calc(78vh*9/16));width:min(100%,calc(78svh*9/16));margin-left:auto;margin-right:auto}
+  .hero-vid{margin-top:26px}
+  .tour-btn{width:100%;justify-content:center}
+  .vwide{margin-top:28px}
+  .mod .vstack{order:1}
+  .tour-box{width:min(94vw,calc(86vh*9/16));width:min(94vw,calc(86svh*9/16));aspect-ratio:9/16}
+}
+/* v2: desktop: price card sizes to its content so there's no empty gap above "Book your call" */
+@media (min-width:761px){.offer{align-items:start}.price .btn{margin-top:0}.price .price-chat{margin-top:10px}}
+/* v3: 'One Text' 78s film section, right after the hero (wide 16:9 on every screen) */
+.sec.film{padding:96px 0 40px}
+.film-head{margin:0 auto 22px;text-align:center}
+.film-head h2{margin-bottom:0}
+@media (min-width:761px){.film-head h2{font-size:clamp(34px,3.6vw,46px)}.film-vid{width:min(100%,calc((100vh - 300px)*16/9));min-width:min(100%,640px)}}
+.film-vid{position:relative;max-width:1040px;margin:0 auto;aspect-ratio:16/9;border-radius:22px;overflow:hidden;border:1px solid var(--line-2);box-shadow:var(--shadow);background:#030814}
+.film-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.film-vid .vcap{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.film-vid .film-sound{top:14px;right:14px;padding:11px 18px 11px 14px;font-size:14.5px;background:var(--grad);border-color:rgba(255,255,255,.35)}
+.film-vid .film-sound[hidden]{display:none}
+.film-vid video::cue{font:500 clamp(13px,1.6vw,20px)/1.35 "IN",system-ui,sans-serif;background:rgba(5,11,24,.78);white-space:pre-wrap}
+@media (max-width:760px){
+  .sec.film{padding:60px 0 24px}
+  .film-head{margin-bottom:18px}
+  .film-vid{border-radius:16px}
+  .film-vid .film-sound{top:10px;right:10px;padding:8px 13px 8px 10px;font-size:13px}
+}
+/* v4: interactive grass band at the foot of the hero (own strip, never over content) */
+.hero:has(.grass-band){padding-bottom:0}
+.grass-band{position:relative;z-index:2;height:200px;margin-top:20px;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%);mask-image:linear-gradient(180deg,transparent 0,#000 22%)}
+.grass-band canvas{display:block;width:100%;height:100%}
+.grass-band.static{background:radial-gradient(55% 80% at 50% 100%,rgba(31,111,255,.30),transparent 72%),repeating-linear-gradient(100deg,rgba(124,196,255,.16) 0 1px,transparent 1px 7px),linear-gradient(180deg,transparent,#0B1730 85%)}
+.grass-band.static canvas{display:none}
+@media (max-width:760px){.grass-band{height:140px;margin-top:16px}}
+/* orb zoom: tall section + CSS-sticky stage; native scrolling, graphics only */
+.orbzoom{position:relative;height:220vh;height:220svh;background:#050B18;margin:0}
+.oz-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;pointer-events:none}
+.oz-stage canvas{display:block;width:100%;height:100%}
+.orbzoom.static{height:auto}
+.orbzoom.static .oz-stage{position:relative;height:auto;aspect-ratio:16/9;max-height:78vh;margin:0 auto;background:#050B18 url(../media/orb-still.jpg) center/cover no-repeat}
+.orbzoom.static canvas{display:none}
+@media (max-width:760px){.orbzoom{height:180vh;height:180svh}.orbzoom.static .oz-stage{aspect-ratio:4/5;background-image:url(../media/orb-still-v.jpg)}}
+/* build section after the film: WebGL field behind, gauge + bars, funnel copy over a scrim */
+.buildfx{position:relative;overflow:hidden;background:#050B18;border-top:1px solid var(--line);border-bottom:1px solid var(--line);isolation:isolate}
+.buildfx>canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;pointer-events:none}
+.buildfx::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(60% 70% at 25% 60%,rgba(5,11,24,.72),transparent 75%),linear-gradient(180deg,rgba(5,11,24,.55),transparent 30%,transparent 80%,rgba(5,11,24,.6))}
+.bx-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;min-height:620px;padding-top:110px;padding-bottom:110px}
+.bx-text h2{font-size:52px;line-height:1.05;font-weight:600;margin:16px 0}
+.bx-text p{color:var(--text-2);font-size:17px;max-width:500px;text-shadow:0 1px 12px rgba(5,11,24,.9)}
+.bx-text .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+.bx-vis{display:flex;flex-direction:column;align-items:center;gap:22px}
+.bx-gauge{position:relative;width:260px;aspect-ratio:1;display:grid;place-items:center}
+.bx-gauge svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(135deg)}
+.bx-ring-bg,.bx-ring-fg{fill:none;stroke-width:6;stroke-linecap:round;stroke-dasharray:.75 1}
+.bx-ring-bg{stroke:rgba(124,196,255,.14)}
+.bx-ring-fg{stroke:url(#bxg);stroke-dasharray:.75 1}
+.bx-gauge::before{content:"";position:absolute;inset:6%;border-radius:50%;box-shadow:0 0 46px rgba(34,211,238,.20),inset 0 0 34px rgba(31,111,255,.20);pointer-events:none}
+.bx-gin{text-align:center}
+.bx-num{display:block;font-size:68px;font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;color:#E8F3FF;text-shadow:0 0 28px rgba(31,111,255,.6)}
+.bx-lbl{display:block;margin-top:8px;font:700 11px "JBM",ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--sky)}
+.bx-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(440px,100%)}
+.bx-card{border:1px solid rgba(124,196,255,.22);background:rgba(8,18,38,.72);border-radius:12px;padding:10px 12px;opacity:0;will-change:opacity,transform}
+.bx-card small{display:block;font:600 10.5px "JBM",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
+.bx-card b{display:block;font-size:24px;font-weight:800;color:#BDEBFF;font-variant-numeric:tabular-nums;margin:2px 0 6px}
+.bx-card i{display:block;height:3px;border-radius:3px;background:rgba(124,196,255,.15);position:relative;overflow:hidden}
+.bx-card i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w,0%);background:linear-gradient(90deg,#1F6FFF,#22D3EE)}
+.bx-note{font:500 10.5px "JBM",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.buildfx.static{background:radial-gradient(70% 50% at 70% 35%,rgba(31,111,255,.22),transparent 70%),radial-gradient(60% 40% at 50% 100%,rgba(31,111,255,.30),transparent 72%),repeating-linear-gradient(100deg,rgba(124,196,255,.10) 0 1px,transparent 1px 7px),#050B18}
+.buildfx.static>canvas{display:none}
+.buildfx.static .bx-card{opacity:1;transform:none}
+@media (max-width:760px){
+  .bx-grid{grid-template-columns:1fr;gap:26px;min-height:0;padding-top:64px;padding-bottom:120px}
+  .bx-vis{order:1;gap:14px}.bx-text{order:2}
+  .bx-gauge{width:180px}.bx-num{font-size:46px}.bx-lbl{font-size:9.5px;letter-spacing:.14em}
+  .bx-cards{gap:6px}.bx-card{padding:8px}.bx-card small{font-size:9px;letter-spacing:.02em}.bx-card b{font-size:19px}
+  .bx-text h2{font-size:34px}.bx-text p{font-size:15.5px}
+  .buildfx::after{background:linear-gradient(180deg,rgba(5,11,24,.5),transparent 25%,rgba(5,11,24,.55) 55%,rgba(5,11,24,.35) 85%,rgba(5,11,24,.6))}
+}
+/* v7 (Oct 27 2026): the 78s film is the first thing under the nav; tour button + 'Call Grace live' under it */
+.sec.film.film-top{position:relative;padding:128px 0 34px;background:radial-gradient(900px 480px at 50% 30%,rgba(31,111,255,.16),transparent 70%)}
+.film-top .film-head{margin-bottom:18px}
+@media (min-width:761px){.film-top .film-vid{width:min(100%,calc((100vh - 340px)*16/9))}}
+.film-under{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px 26px;max-width:1040px;margin:16px auto 0}
+.film-under .tour-btn{margin-top:0}
+.film-under .call{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.film-under .call b{color:var(--text);font-weight:600}
+.hero{min-height:760px}
+.hero .wrap{padding-top:72px}
+.sec.hl-sec{padding:72px 0 24px}
+.hl-sec .hero-vid{margin:0 auto}
+/* fixed nav: opaque glass so page content never shows through the logo / buttons when scrolling */
+.nav.fixed{background:rgba(5,11,24,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+@media (max-width:760px){
+  .sec.film.film-top{padding:104px 0 22px}
+  .film-under{flex-direction:column;gap:12px;margin-top:14px}
+  .film-under .call{font-size:13px}
+  .hero{min-height:0}
+  #core{top:10px}
+  .hero .wrap{padding-top:300px}
+  .sec.hl-sec{padding:48px 0 12px}
+}
+@media (min-width:761px) and (max-width:1100px){.nav .wrap{gap:14px}.nav nav a{white-space:nowrap;padding:7px 9px;font-size:12.5px}.nav nav a i{margin-right:4px}}
+/* v8 (Oct 27 2026): fixed 3D signal-strand field behind the whole page (js/bgfield.js), ported from the interactive preview */
+html:has(#bgfield){background:var(--bg)}
+body:has(#bgfield){background:transparent}
+.bgfield{position:fixed;inset:0;z-index:-1;pointer-events:none;background:#06101F}
+.bgfield canvas{display:block;width:100%;height:100%;opacity:.75}
+/* readability scrim: darkens the middle column where text sits, lets the field breathe at the edges */
+.bgfield::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 42%,rgba(5,11,24,.55),rgba(5,11,24,.18) 70%,transparent),linear-gradient(180deg,rgba(5,11,24,.35),transparent 30%,transparent 75%,rgba(5,11,24,.25))}
+.bgfield.static{background:radial-gradient(70% 45% at 50% 100%,rgba(31,111,255,.28),transparent 72%),radial-gradient(50% 40% at 80% 20%,rgba(34,211,238,.10),transparent 70%),repeating-linear-gradient(100deg,rgba(124,196,255,.07) 0 1px,transparent 1px 8px),linear-gradient(180deg,#050B18,#081428 60%,#0B1730)}
+.bgfield.static canvas{display:none}
+/* let the field show through the hero (its own orb + glows stay on top) */
+body:has(#bgfield) .hero{background:radial-gradient(900px 600px at 78% 42%,var(--hero-glow),transparent 70%),radial-gradient(700px 500px at 10% 0%,rgba(0,71,223,.18),transparent 70%),rgba(5,11,24,.5)}
+body:has(#bgfield) .ribbon{background:rgba(9,18,38,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+
+/* v9 (Oct 27 2026): three small cleanups (Patrick via Legacy)
+   1) Keep 'Ask the agent' launch pill from touching the film's LIVE badge at any width
+   2) Tighten ~100px gap above the orb on phones
+   3) (logo href → #one-text is in build.py / index.html) */
+@media (min-width:761px){
+  .sec.film.film-top{padding:120px 0 96px}
+  .film-top .film-vid{width:min(100%,calc((100vh - 430px)*16/9));min-width:min(100%,560px)}
+  /* reserve the fixed launch FAB so LIVE never sits under it */
+  .film-under{padding-right:220px;box-sizing:border-box}
+}
+@media (min-width:1240px){
+  .film-under{padding-right:0}
+}
+@media (max-width:760px){
+  .hero .wrap{padding-top:200px} /* was 300 — less empty space above the hero orb */
+  .control{padding-bottom:16px} /* was 80 — less empty space above Mission Control orb */
+}

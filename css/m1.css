@@ -1,0 +1,108 @@
+/* Milestone 1 overrides on top of the generated base.css (v2 mockup styles). */
+html{scroll-behavior:auto}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.m1-flag{position:absolute;top:84px;left:40px;z-index:60;font:500 11px "JBM";letter-spacing:.08em;color:#06101F;background:var(--amber);padding:5px 12px;border-radius:99px;text-transform:uppercase}
+body.shot-m1 .m1-flag{display:none}
+:focus-visible{outline:2px solid var(--blue-bright);outline-offset:3px;border-radius:8px}
+
+/* nav: active section pill (replaces the static first-child highlight) */
+.nav nav a:first-child{background:none;color:var(--text-2)}
+.nav nav a{transition:background .3s,color .3s}
+.nav nav a.is-active{background:var(--surface-2);color:var(--text)}
+.nav.fixed{position:fixed;padding:12px 0;background:linear-gradient(180deg,rgba(5,11,24,.86),rgba(5,11,24,0));transition:transform .35s}
+.nav.fixed.hide{transform:translateY(-110%)}
+
+/* hero canvas + static fallback */
+#core{pointer-events:none}
+.hero .split .w{display:inline-block;will-change:transform}
+html.nogl #core{opacity:.95}
+.js .chipf{opacity:0}
+html.reduced .chipf,html.nojs-anim .chipf{opacity:1}
+
+/* shop: module pill that tracks the active module (desktop) */
+.modpill{position:sticky;top:84px;z-index:15;display:inline-flex;gap:10px;align-items:center;margin:0 0 -40px;padding:8px 14px;border-radius:99px;background:var(--glass);border:1px solid var(--line-2);backdrop-filter:blur(12px);font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none}
+.modpill span{font:500 10.5px "JBM";letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.modpill.on{opacity:1}
+.idx a .dots u{transform-origin:center}
+.mod.soonmod .fixbox{box-shadow:none}
+@media (min-width:1100px){.mod .video{position:sticky;top:110px}}
+
+/* connect: hub tiles light up */
+.hub div{transition:border-color .4s,box-shadow .4s}
+.hub div.lit{border-color:rgba(2,161,254,.55);box-shadow:0 0 0 1px rgba(2,161,254,.15),0 10px 30px -12px rgba(2,161,254,.6)}
+.phone .confirm span.on.pulse{animation:pulse 1.2s ease-in-out 2}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(2,161,254,.25)}}
+.flow li.ok.glow i{animation:okglow 2.4s ease-in-out 3;border-color:var(--green);color:var(--green)}
+@keyframes okglow{50%{box-shadow:0 0 0 8px rgba(43,217,160,.16)}}
+.final .rings{animation:rings 4s ease-in-out infinite}
+@keyframes rings{50%{transform:translate(-50%,-50%) scale(1.025);opacity:.75}}
+
+/* price card wording: "starts at $1,500 setup plus $600 a month" */
+.price .amt .from{display:block;font:500 13px "JBM";letter-spacing:.1em;text-transform:uppercase;color:#7CC4FF;margin-bottom:8px}
+.price .pchecks{margin:22px 0 26px}
+.price .price-chat{margin-top:10px;justify-content:center;color:#EEF4FF;border-color:rgba(124,196,255,.35);background:rgba(255,255,255,.04)}
+.price{display:flex;flex-direction:column}
+
+/* sample transcript in the agent section */
+.chat-sample .chat-b{max-height:560px;overflow:hidden}
+
+/* ===== scripted chat widget ===== */
+.launch{position:fixed;right:28px;bottom:28px;z-index:41;display:flex;align-items:center;gap:12px;padding:10px 20px 10px 10px;border-radius:99px;background:var(--glass);border:1px solid var(--line-2);backdrop-filter:blur(14px);box-shadow:var(--shadow);font:600 14.5px "IN";text-align:left}
+.launch small{display:block;font:400 10.5px "JBM";color:var(--muted)}
+.launch .orb{position:relative}
+body.chat-open .launch{opacity:0;pointer-events:none}
+.dock{width:380px;transform-origin:100% 100%}
+.dock[hidden]{display:none!important}
+#chat{display:flex;flex-direction:column;max-height:min(680px,calc(100vh - 56px))}
+#chat .chat-h .x{cursor:pointer;border-style:solid;color:var(--text-2);border-color:var(--line-2);font-size:16px;line-height:1;padding:4px 9px}
+#chat .chat-h .tagx{font:500 9.5px "JBM";color:var(--amber);border:1px dashed rgba(245,181,68,.6);padding:3px 6px;border-radius:6px;margin-left:auto}
+#chat .chat-h .tagx+.x{margin-left:8px}
+#chat .chat-b{flex:1;overflow-y:auto;overscroll-behavior:contain;min-height:220px;scroll-behavior:smooth}
+#chat .qr button{font:500 12.5px "IN";padding:7px 12px;border-radius:99px;border:1px solid var(--line-2);color:var(--sky)}
+#chat .qr button:hover{border-color:var(--blue-bright);color:var(--text)}
+#chat .qr button.hp{border-style:dashed;color:var(--text)}
+#chat .qr.used button{opacity:.45;pointer-events:none}
+#chat .qr.used button.on{opacity:1;background:rgba(2,161,254,.15);border-color:var(--blue-bright);color:var(--text)}
+#chat .slots .g button{font:500 12.5px "IN";text-align:center;padding:8px 0;border-radius:9px;border:1px solid var(--line-2);color:var(--text-2)}
+#chat .slots .g button:hover{border-color:var(--blue-bright);color:var(--text)}
+#chat .slots .g button.on{background:var(--grad);border-color:transparent;color:#fff}
+#chat .slots.used .g button:not(.on){opacity:.4;pointer-events:none}
+#chat .slots .g{grid-template-columns:repeat(3,1fr)}
+#chat .slots .t em{font-style:normal;color:var(--amber)}
+#chat .typing{display:inline-flex;gap:4px;padding:12px 14px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line);align-self:flex-start}
+#chat .typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:dots 1s infinite}
+#chat .typing i:nth-child(2){animation-delay:.15s}#chat .typing i:nth-child(3){animation-delay:.3s}
+@keyframes dots{50%{opacity:.25;transform:translateY(-2px)}}
+#chat .handoff{border:1px dashed var(--line-2);border-radius:14px;padding:11px 13px;font-size:13.5px;max-width:92%;background:var(--surface)}
+#chat .handoff b{display:block}
+#chat .booked small em{font-style:normal;color:var(--amber)}
+#chat form.chat-f{margin:0}
+#chat .chat-f input{flex:1;height:42px;border-radius:12px;border:1px solid var(--line-2);background:transparent;color:var(--text);padding:0 14px;font:400 14px "IN";min-width:0}
+#chat .chat-f input::placeholder{color:var(--muted)}
+#chat .chat-f button.send{width:42px;height:42px;border-radius:12px;background:var(--grad);display:grid;place-items:center;flex:none}
+#chat .chat-f button.send svg{width:18px;fill:#fff}
+.m{word-wrap:break-word}
+
+@media (max-width:760px){
+  .m1-flag{top:64px;left:20px;font-size:9.5px}
+  .modpill{display:none}
+  .launch{display:none}
+  .sticky .ask{text-align:left}
+  .nav.fixed{background:rgba(5,11,24,.9)}
+  body.chat-open .sticky{display:none}
+  body.chat-open .sheet-bg{display:block;position:fixed;inset:0;z-index:50;background:rgba(2,6,16,.6);backdrop-filter:blur(3px)}
+  .dock{left:0;right:0;bottom:0;width:auto;z-index:55}
+  #chat{border-radius:26px 26px 0 0;border-bottom:0;max-height:86vh;max-height:86dvh}
+  #chat .chat-h{padding-top:26px;position:relative}
+  #chat .chat-h::before{content:"";position:absolute;top:9px;left:50%;width:44px;height:5px;margin-left:-22px;border-radius:9px;background:var(--line-2)}
+  #chat .chat-f{padding-bottom:max(12px,env(safe-area-inset-bottom))}
+  #chat .chat-f input{font-size:16px} /* stop iOS zoom on focus */
+  .chat-sample{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+@media (max-width:760px){body.chat-open .dock{display:block}}
