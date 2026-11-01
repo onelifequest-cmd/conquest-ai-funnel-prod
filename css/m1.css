@@ -40,7 +40,7 @@ html.reduced .chipf,html.nojs-anim .chipf{opacity:1}
 .final .rings{animation:rings 4s ease-in-out infinite}
 @keyframes rings{50%{transform:translate(-50%,-50%) scale(1.025);opacity:.75}}
 
-/* price card wording: "starts at $1,500 setup plus $600 a month" */
+/* price card wording: "starts at $2,500 setup plus $600 a month" */
 .price .amt .from{display:block;font:500 13px "JBM";letter-spacing:.1em;text-transform:uppercase;color:#7CC4FF;margin-bottom:8px}
 .price .pchecks{margin:22px 0 26px}
 .price .price-chat{margin-top:10px;justify-content:center;color:#EEF4FF;border-color:rgba(124,196,255,.35);background:rgba(255,255,255,.04)}

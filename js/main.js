@@ -7,7 +7,7 @@ import { chatConfig } from './config.js';
 import { drawStatic } from './fallback2d.js';
 
 /* ===== PRICING: the one place to change prices. Every price on the page reads from here. ===== */
-const PRICING = { setup: 1500, monthly: 600 };
+const PRICING = { setup: 2500, monthly: 600 };
 
 const q = new URLSearchParams(location.search);
 const docEl = document.documentElement;
