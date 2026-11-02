@@ -302,7 +302,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </ul>
   <div class="cta signup">
     <p class="lead" style="margin-bottom:6px;width:100%">Whenever you're ready, we'd be glad to get started together.</p>
-    <a class="btn" data-pay href="#" aria-disabled="true" tabindex="-1" role="link" title="Payment link coming soon" style="pointer-events:none;opacity:.72;cursor:not-allowed">Payment link coming soon</a>
+    <a class="btn" data-pay href="https://link.fastpaydirect.com/payment-link/6ae8e3525b49394de8f58dec" target="_blank" rel="noopener noreferrer" title="Pay $2,500 & get started">Pay $2,500 & get started</a>
     <span class="fine">$2,500 setup at sign-up. Your monthly begins 30 days after sign-up.</span>
   </div>
   <div class="sig"><div class="name">Patrick Sotello</div><div class="muted">MERKABA Global · Conquest AI · (407) 759-3075</div></div>
@@ -312,19 +312,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <script>
   // Single place to change the enrollment / payment link.
-  // Keep "#" until Auto supplies the live $2,500 + $600/mo link.
-  const PAY_LINK = "#";
+  const PAY_LINK = "https://link.fastpaydirect.com/payment-link/6ae8e3525b49394de8f58dec";
   document.querySelectorAll("a[data-pay]").forEach(function (a) {
     if (PAY_LINK && PAY_LINK !== "#") {
       a.href = PAY_LINK;
       a.target = "_blank";
-      a.rel = "noopener";
+      a.rel = "noopener noreferrer";
       a.removeAttribute("aria-disabled");
       a.removeAttribute("tabindex");
       a.style.pointerEvents = "";
       a.style.opacity = "";
       a.style.cursor = "";
-      a.textContent = "Pay · $2,500 setup";
+      if (!a.textContent.trim() || a.textContent.indexOf("coming soon") !== -1) {
+        a.textContent = "Pay $2,500 & get started";
+      }
     } else {
       a.href = "#";
       a.setAttribute("aria-disabled", "true");
